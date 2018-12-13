@@ -37,4 +37,8 @@ else:
 #cv2.putText(output, label, (10, 25),  cv2.FONT_HERSHEY_SIMPLEX,0.7, (100, 255, 0), 2)
 
 cv2.imshow("Output", output)
-cv2.waitKey(0)
+if fire > 0.2:
+    cv2.waitKey(0)
+    exit(1)
+else:
+    cv2.waitKey(250)
