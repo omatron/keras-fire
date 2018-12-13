@@ -4,6 +4,7 @@ import numpy as np
 import argparse
 import imutils
 import cv2
+import pyglet
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-m", "--model", required=True,
@@ -38,7 +39,16 @@ else:
 
 cv2.imshow("Output", output)
 if fire > 0.2:
+    music = pyglet.media.load('alarm.wav')
+    music.play()
+    def exiter(dt):
+        pyglet.app.exit()
+
+    pyglet.clock.schedule_once(exiter, music.duration)
+    pyglet.app.run()
     cv2.waitKey(0)
     exit(1)
+
 else:
-    cv2.waitKey(250)
+    cv2.waitKey(1000)
+    exit(0)
