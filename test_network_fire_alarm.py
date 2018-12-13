@@ -39,6 +39,7 @@ else:
 
 cv2.imshow("Output", output)
 if fire > 0.2:
+    cv2.waitKey(100)
     music = pyglet.media.load('alarm.wav')
     music.play()
     def exiter(dt):
@@ -46,6 +47,7 @@ if fire > 0.2:
 
     pyglet.clock.schedule_once(exiter, music.duration)
     pyglet.app.run()
+    cv2.imshow("Output", output)
     cv2.waitKey(0)
     exit(1)
 
